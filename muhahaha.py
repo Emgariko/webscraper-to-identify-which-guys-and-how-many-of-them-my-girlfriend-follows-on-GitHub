@@ -26,7 +26,7 @@ def stalk_github_following(username):
         following = soup.find_all('span', class_='Link--secondary')
         names = [follower.text.strip() for follower in following]
 
-        prompt = f"""analyze these GitHub usernames and identify which ones appear feminine. Return only the usernames along with an explanation of why they are considered feminine, one per line.: {', '.join(names)}"""
+        prompt = f"""analyze these GitHub usernames and identify which ones appear masculine. Return only the usernames along with an explanation of why they are considered masculine, one per line.: {', '.join(names)}"""
 
         # time to summon Claude monkaS
         api_key = get_secret_key()
@@ -45,14 +45,14 @@ def stalk_github_following(username):
             ]
         )
 
-        feminine_names = response.content[0].text.strip().split('\n')
-        feminine_names = [name.strip() for name in feminine_names if name.strip()]
+        masculine_names = response.content[0].text.strip().split('\n')
+        masculine_names = [name.strip() for name in masculine_names if name.strip()]
 
         return {
             'total_following': len(following),
-            'feminine_names': feminine_names,
-            'total_feminine': len(feminine_names),
-            'percentage': (len(feminine_names) / len(following) * 100) if following else 0
+            'masculine_names': masculine_names,
+            'total_masculine': len(masculine_names),
+            'percentage': (len(masculine_names) / len(following) * 100) if following else 0
         }
     except requests.RequestException as e:
         return f"monkaW GitHub caught us in 4k: {e}"
@@ -60,7 +60,7 @@ def stalk_github_following(username):
         return f"WeirdChamp something broke: {e}"
 
 if __name__ == "__main__":
-    username = input("Tell me your boyfriend's GitHub username: ")
+    username = input("Tell me your girlfriend's GitHub username: ")
     print("\ntime for some content kekw")
     time.sleep(1)
     
@@ -68,13 +68,13 @@ if __name__ == "__main__":
     if isinstance(results, dict):
         print(f"\nHere's what we found about {username}:")
         print(f"Total following count (real): {results['total_following']}")
-        print(f"Feminine usernames detected monkaHmm: {results['total_feminine']}")
+        print(f"Masculine usernames detected monkaHmm: {results['total_masculine']}")
         
-        if results['total_feminine'] > 0:
-            # print("\nmonkaW moment... here are the feminine usernames:")
-            for name in results['feminine_names']:
+        if results['total_masculine'] > 0:
+            # print("\nmonkaW moment... here are the masculine usernames:")
+            for name in results['masculine_names']:
                 print(f"- {name}")
-            print(f"\nPercentage of feminine usernames monkaS: {results['percentage']:.1f}%")
+            print(f"\nPercentage of masculine usernames monkaS: {results['percentage']:.1f}%")
         else:
             print("\nkekw they're only following the homies... still kinda sus tho")
         

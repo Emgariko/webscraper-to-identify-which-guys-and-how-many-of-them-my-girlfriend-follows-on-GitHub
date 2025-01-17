@@ -5,7 +5,7 @@
 
 ## Features 
 - stalks GitHub following page like a real detective 
-- uses Claude's AI brain to find feminine usernames 
-- gives u the % of feminine usernames they follow (real)
+- uses Claude's AI brain to find masculine usernames 
+- gives u the % of masculine usernames they follow (real)
 - pretends to be a normal browser (very sneaky kekw)
 
