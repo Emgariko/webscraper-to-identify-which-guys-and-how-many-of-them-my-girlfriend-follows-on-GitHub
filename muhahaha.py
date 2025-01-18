@@ -30,7 +30,7 @@ def stalk_github_following(username):
 
         # time to summon Claude monkaS
         api_key = get_secret_key()
-        if not api_key: 
+        if not api_key:
             return "Sadge no API key found to summon Claude monkaW"
 
         claude = Anthropic(api_key=api_key)
@@ -63,22 +63,22 @@ if __name__ == "__main__":
     username = input("Tell me your girlfriend's GitHub username: ")
     print("\ntime for some content kekw")
     time.sleep(1)
-    
+
     results = stalk_github_following(username)
     if isinstance(results, dict):
         print(f"\nHere's what we found about {username}:")
         print(f"Total following count (real): {results['total_following']}")
         print(f"Masculine usernames detected monkaHmm: {results['total_masculine']}")
-        
+
         if results['total_masculine'] > 0:
             # print("\nmonkaW moment... here are the masculine usernames:")
             for name in results['masculine_names']:
                 print(f"- {name}")
             print(f"\nPercentage of masculine usernames monkaS: {results['percentage']:.1f}%")
         else:
-            print("\nkekw they're only following the homies... still kinda sus tho")
-        
+            print("\nkekw they're only following the gals... still kinda sus tho")
+
         print("\n⚠️ Disclaimer: im not toxic copium")
     else:
         print(f"Investigation failed Sadge: {results}")
-        
+
